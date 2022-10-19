@@ -7,7 +7,7 @@ class DarkRoast extends Beverage {
 	}
 
 	cost(): number {
-		return 1.99
+		return 3000
 	}
 }
 

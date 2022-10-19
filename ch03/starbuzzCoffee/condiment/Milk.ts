@@ -9,7 +9,7 @@ class Milk extends CondimentalDecorator {
 		return this.beverage.getDescription() + ', 우유'
 	}
 	cost() {
-		return this.beverage.cost() + 0.2
+		return this.beverage.cost() + 500
 	}
 }
 
