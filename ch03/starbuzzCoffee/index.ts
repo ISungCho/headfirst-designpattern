@@ -19,7 +19,7 @@ beverage2 = new Mocha(beverage2)
 console.log(`${beverage2.getDescription()}: $${beverage2.cost()}`)
 
 let beverage3 = new Decaf()
-beverage2 = new Milk(beverage2)
+beverage3 = new Milk(beverage3)
 beverage3 = new Whip(beverage3)
 beverage3 = new Whip(beverage3)
 console.log(`${beverage3.getDescription()}: $${beverage3.cost()}`)
