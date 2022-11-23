@@ -4,8 +4,8 @@ import Light from './Light'
 
 const remoteControl = new RemoteControl()
 
-const kitchenLight = new Light()
-const livingRoomLight = new Light()
+const kitchenLight = new Light('부엌')
+const livingRoomLight = new Light('거실')
 
 const kitchenLightOn = new LightOnCommand(kitchenLight)
 const kitchenLightOff = new LightOffCommand(kitchenLight)
@@ -23,3 +23,5 @@ for (let i = 0; i < 4; i++) {
   remoteControl.offButtonWasPushed(i)
 }
 
+
+remoteControl.undoButtonWasPushed()

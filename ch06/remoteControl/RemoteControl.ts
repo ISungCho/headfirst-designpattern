@@ -4,6 +4,7 @@ const MAX = 7
 class RemoteControl {
 	private onCommands: Command[] = []
 	private offCommands: Command[] = []
+	private undoCommand: Command;
 	constructor() {
 		this.onCommands = Array(MAX)
 		this.offCommands = Array(MAX)
@@ -12,6 +13,7 @@ class RemoteControl {
 			this.onCommands[i] = noCommand
 			this.offCommands[i] = noCommand
 		}
+		this.undoCommand = noCommand
 	}
 
 	setCommand(slot: number, onCommand: Command, offCommand: Command) {
@@ -21,15 +23,17 @@ class RemoteControl {
 
 	onButtonWasPushed(slot: number) {
 		this.onCommands[slot].execute()
+		this.undoCommand = this.onCommands[slot]
 	}
 
 	offButtonWasPushed(slot: number) {
 		this.offCommands[slot].execute()
-  }
-  
-  reset(slot: number) {
-    this.
-  }
+		this.undoCommand = this.offCommands[slot]
+	}
+	
+	undoButtonWasPushed() {
+		this.undoCommand.undo()
+	}
 
 	toString() {
 		let stringBuffer: string = ''

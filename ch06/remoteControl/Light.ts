@@ -1,9 +1,13 @@
 class Light {
+	name: string = ''
+	constructor(name: string) {
+		this.name = name
+	}
 	on() {
-		console.log('반짝!')
+		console.log(this.name + '이 반짝!')
 	}
 	off() {
-		console.log('깜깜..')
+		console.log(this.name + '이 깜깜..')
 	}
 }
 
