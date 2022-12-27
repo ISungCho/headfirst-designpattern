@@ -1,7 +1,7 @@
 import { State, NoQuarterState, SoldOutState, HasQuarterState, SoldState, WinState } from "./State";
 const WIN_TIMES = 2;
 class GumballMachine {
-  static WIN_TIMES = WIN_TIMES
+  static WIN_TIMES = WIN_TIMES;
   soldOutState!: State;
   noQuarterState!: State;
   hasQuarterState!: State;
@@ -45,6 +45,9 @@ class GumballMachine {
     this.state = state;
   }
 
+  releaseBall() {
+    this.count--;
+  }
   insertQuarter() {
     this.state.insertQuarter();
   }
@@ -64,7 +67,7 @@ class GumballMachine {
     }
   }
   toString() {
-    return this.state.toString()
+    return this.state.toString();
   }
 }
 

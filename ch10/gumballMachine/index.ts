@@ -1,6 +1,6 @@
 import GumballMachine from './GumballMachine';
 
-const gumballMachine = new GumballMachine(5)
+const gumballMachine = new GumballMachine(4)
 
 gumballMachine.insertQuarter()
 console.log(gumballMachine.toString())

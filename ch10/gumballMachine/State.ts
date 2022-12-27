@@ -26,7 +26,7 @@ export class SoldOutState implements State {
     console.log("매진입니다.");
   }
   toString(): string {
-      return "SOLD_OUT"
+    return "SOLD_OUT";
   }
 }
 
@@ -49,7 +49,7 @@ export class NoQuarterState implements State {
     console.log("동전을 넣어주세요");
   }
   toString(): string {
-      return "NO_QUARTER"
+    return "NO_QUARTER";
   }
 }
 
@@ -77,16 +77,14 @@ export class HasQuarterState implements State {
     console.log("알맹이를 내보내고 있습니다.");
   }
   toString(): string {
-      return "HAS_QUARTER"
+    return "HAS_QUARTER";
   }
 }
 
 export class SoldState implements State {
-  count = 0;
   gumballMachine: GumballMachine;
   constructor(gumballMachine: GumballMachine) {
     this.gumballMachine = gumballMachine;
-    this.count = gumballMachine.count;
   }
   insertQuarter() {
     console.log("이미 알맹이를 뽑으셨습니다.");
@@ -99,8 +97,8 @@ export class SoldState implements State {
   }
   dispense() {
     console.log("알맹이를 내보내고 있습니다.");
-    this.count = this.count - 1;
-    if (this.count == 0) {
+    this.gumballMachine.releaseBall();
+    if (this.gumballMachine.count == 0) {
       console.log("더 이상 알맹이가 없습니다.");
       this.gumballMachine.setState(this.gumballMachine.getSoldOutState());
     } else {
@@ -108,16 +106,14 @@ export class SoldState implements State {
     }
   }
   toString(): string {
-      return "SOLD"
+    return "SOLD";
   }
 }
 
 export class WinState implements State {
-  count = 0;
   gumballMachine: GumballMachine;
   constructor(gumballMachine: GumballMachine) {
     this.gumballMachine = gumballMachine;
-    this.count = gumballMachine.count;
   }
   insertQuarter() {
     console.log("이미 알맹이를 뽑으셨습니다.");
@@ -129,16 +125,22 @@ export class WinState implements State {
     console.log("손잡이는 한 번만 돌려 주세요.");
   }
   dispense() {
-    console.log("당첨! 2개의 알맹이를 내보내고 있습니다.");
-    this.count = this.count - 2;
-    if (this.count == 0) {
+    this.gumballMachine.releaseBall();
+    if (this.gumballMachine.count == 0) {
       console.log("더 이상 알맹이가 없습니다.");
       this.gumballMachine.setState(this.gumballMachine.getSoldOutState());
     } else {
-      this.gumballMachine.setState(this.gumballMachine.getNoQuarterState());
+      this.gumballMachine.releaseBall();
+      console.log("당첨! 2개의 알맹이를 내보내고 있습니다.");
+      if (this.gumballMachine.count > 0) {
+        this.gumballMachine.setState(this.gumballMachine.getNoQuarterState());
+      } else {
+        console.log("더 이상 알맹이가 없습니다.");
+        this.gumballMachine.setState(this.gumballMachine.getSoldOutState());
+      }
     }
   }
   toString(): string {
-      return "WIN"
+    return "WIN";
   }
 }
