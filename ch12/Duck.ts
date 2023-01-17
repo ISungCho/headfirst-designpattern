@@ -1,27 +1,25 @@
-import { Goose } from './Goose'
-
-export interface Quakable {
+export interface Quackable {
 	quack(): void
 }
 
-export class MallardDuck implements Quakable {
+export class MallardDuck implements Quackable {
 	quack() {
 		console.log('꽥꽥')
 	}
 }
 
-export class RedheadDuck implements Quakable {
+export class RedheadDuck implements Quackable {
 	quack() {
 		console.log('꽥꽥')
 	}
 }
 
-export class DuckCall implements Quakable {
+export class DuckCall implements Quackable {
 	quack() {
 		console.log('꽉꽉')
 	}
 }
-export class RubberDuck implements Quakable {
+export class RubberDuck implements Quackable {
 	quack() {
 		console.log('삑삑')
 	}

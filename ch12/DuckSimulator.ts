@@ -1,4 +1,4 @@
-import { MallardDuck, Quakable, RedheadDuck, DuckCall, RubberDuck } from './Duck'
+import { MallardDuck, Quackable, RedheadDuck, DuckCall, RubberDuck } from './Duck'
 import { Goose } from './Goose'
 import { GooseAdapter } from './GooseAdapter'
 
@@ -18,7 +18,7 @@ export class DuckSimulator {
 		this.simulate(new GooseAdapter(goose))
 	}
 
-	simulate(duck: Quakable) {
+	simulate(duck: Quackable) {
 		duck.quack()
 	}
 }
