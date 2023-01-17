@@ -11,7 +11,7 @@ export class DuckSimulator {
     const redheadDuck = duckFactory.createRedheadDuck();
     const duckCall = duckFactory.createDuckCall();
     const rubberDuck = duckFactory.createRubberDuck();
-    const gooseDuck = new GooseAdapter(new Goose());
+    const gooseDuck = duckFactory.createGooseDuck();
 
     console.log("\n오리 시뮬레이션 게임 - 팩토리패턴");
     this.simulate(mallardDuck);
