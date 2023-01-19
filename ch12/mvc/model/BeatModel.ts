@@ -17,6 +17,7 @@ export class BeatModel implements BeatModelInterface {
     this.bpm = 90;
     this.notifyBPMObservers();
     this.stop = false;
+    this.run()
   }
   off(): void {
     this.stopBeat();
@@ -75,3 +76,5 @@ export class BeatModel implements BeatModelInterface {
     });
   }
 }
+
+export default BeatModel

@@ -1,37 +1,29 @@
-import BeatModelInterface from "../model/BeatModelInterface";
+import BeatController from "./BeatModelController";
+import BeatModel from "../model/BeatModel";
 import DjView from "../view/DjView";
-export interface ControllerInterface {
-  start(): void;
-  stop(): void;
-  increaseBPM(): void;
-  decreaseBPM(): void;
-  setBPM(bpm: number);
-}
 
-class BeatController implements ControllerInterface {
-  model!: BeatModelInterface;
-  view!: DjView;
-  constructor(model: BeatModelInterface) {
-    this.model = model;
-    this.view = new DjView(this, model);
+const model = new BeatModel();
+const beatController = new BeatController(model);
 
-    this.view.createView();
-    this.model.initialize();
-  }
-  start(): void {
-    this.model.on();
-    // this.view.
-  }
-  stop(): void {
-    this.model.off();
-  }
-  increaseBPM(): void {
-    this.model.setBPM(this.model.getBPM() + 1);
-  }
-  decreaseBPM(): void {
-    this.model.setBPM(this.model.getBPM() - 1);
-  }
-  setBPM(bpm: number) {
-    this.model.setBPM(bpm);
-  }
-}
+console.log("------- START --------");
+beatController.start();
+
+setTimeout(() => {
+  console.log("------- BPM UP --------");
+  beatController.increaseBPM();
+}, 3000);
+
+setTimeout(() => {
+  console.log("------- BPM DOWN --------");
+  beatController.decreaseBPM();
+}, 6000);
+
+setTimeout(() => {
+  console.log("------- BPM SET --------");
+  beatController.setBPM(200);
+}, 9000);
+
+setTimeout(() => {
+  console.log("------- STOP --------");
+  beatController.stop();
+}, 12000);
